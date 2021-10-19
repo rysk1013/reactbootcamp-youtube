@@ -3,24 +3,26 @@ import { HomeLayout } from "./layouts/Home";
 import { SideLessHomeLayout } from "./layouts/SideLessHome";
 import { SimpleLayout } from "./layouts/Simple";
 import { Home } from "./pages/Home";
-
-// Watchコンポーネントをimport
+import { Upload } from "./pages/Upload";
 import { Watch } from "./pages/Watch";
 
 export const RootRouter = () => {
   return useRoutes([
     {
       element: <HomeLayout />,
-      children: [{ path: "/", element: <Home /> }],
+      children: [
+        { path: "/", element: <Home /> },
+
+        // `Header`と`Sidebar`があるレイアウトのため、<HomeLayout>が指定しているelementで`upload`を呼び出します。
+        { path: "upload", element: <Upload /> },
+      ],
     },
 
     {
       element: <SideLessHomeLayout />,
       children: [
         { path: "watch", element: <Navigate to="/" /> },
-
-        // Watchコンポーネントを`watch/:videoId`のURLパスで表示
-        { path: "watch/:videoId", element: <Watch /> },
+        { path: "watch/:videId", element: <Watch /> },
       ],
     },
 
