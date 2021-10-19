@@ -1,8 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [state, setState] = useState(new Date())
+  setInterval(() => {
+    setState(new Date())
+  }, 1000)
+
+  // この記述では「useState」を使っていないので更新されない
+  // let state = new Date()
+  // setInterval(() => {
+  //   state = new Date()
+  // }, 1000)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,6 +22,7 @@ function App() {
         <p>
           ReactBootcamp Youtube App
         </p>
+        <p>{state.toLocaleTimeString()}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
