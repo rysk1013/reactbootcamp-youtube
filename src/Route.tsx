@@ -1,3 +1,5 @@
+// src/Route.tsx
+
 import { Navigate, useRoutes } from "react-router-dom";
 import { HomeLayout } from "./layouts/Home";
 import { SideLessHomeLayout } from "./layouts/SideLessHome";
@@ -5,6 +7,11 @@ import { SimpleLayout } from "./layouts/Simple";
 import { Home } from "./pages/Home";
 import { Upload } from "./pages/Upload";
 import { Watch } from "./pages/Watch";
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
+
+// <ForgetPassForm>import
+import { ForgetPassForm } from "./pages/ForgetPassForm";
 
 export const RootRouter = () => {
   return useRoutes([
@@ -12,8 +19,6 @@ export const RootRouter = () => {
       element: <HomeLayout />,
       children: [
         { path: "/", element: <Home /> },
-
-        // `Header`と`Sidebar`があるレイアウトのため、<HomeLayout>が指定しているelementで`upload`を呼び出します。
         { path: "upload", element: <Upload /> },
       ],
     },
@@ -29,9 +34,10 @@ export const RootRouter = () => {
     {
       element: <SimpleLayout />,
       children: [
-        { path: "login", element: <div>ログイン</div> },
-        { path: "signup", element: <div>新規作成</div> },
-        { path: "forget", element: <div>パスワードリセット</div> },
+        { path: "login", element: <Login /> },
+        { path: "signup", element: <Signup /> },
+        // <ForgetPassForm>コンポーネントを'/forget'を表示
+        { path: "forget", element: <ForgetPassForm /> },
         { path: "404", element: <div>Not Found</div> },
         { path: "*", element: <Navigate to="/404" /> },
       ],
