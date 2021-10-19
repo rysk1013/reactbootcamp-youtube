@@ -2,25 +2,25 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { HomeLayout } from "./layouts/Home";
 import { SideLessHomeLayout } from "./layouts/SideLessHome";
 import { SimpleLayout } from "./layouts/Simple";
-
-// 先程のHomeコンポーネントをimport
 import { Home } from "./pages/Home";
+
+// Watchコンポーネントをimport
+import { Watch } from "./pages/Watch";
 
 export const RootRouter = () => {
   return useRoutes([
     {
       element: <HomeLayout />,
-
-      // "element"に<Home />を指定して、URL`/`にアクセスした時にどのコンポーネントを呼び出すか指定します。
       children: [{ path: "/", element: <Home /> }],
     },
 
     {
       element: <SideLessHomeLayout />,
-
       children: [
         { path: "watch", element: <Navigate to="/" /> },
-        { path: "watch/:videoId", element: <div>watch</div> },
+
+        // Watchコンポーネントを`watch/:videoId`のURLパスで表示
+        { path: "watch/:videoId", element: <Watch /> },
       ],
     },
 
