@@ -20,4 +20,3 @@ export const uploader = (ref: string, file: File) =>
  */
 export const downloader = (ref: string) =>
   storage.ref().child(ref).getDownloadURL();
-
