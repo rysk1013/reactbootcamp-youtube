@@ -1,29 +1,31 @@
+// src/pages/Home/index.tsx
+
 import { Container, Grid } from "@material-ui/core";
 import { VideoCard } from "../../components/VideoCard";
 
 export const Home = () => {
   return (
-    // 全ての要素をContainerで囲むことで、デザインが「整う」
     <Container>
-
+      {/* 取得したデータを表示してみる */}
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <VideoCard />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <VideoCard />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <VideoCard />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <VideoCard />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <VideoCard />
         </Grid>
       </Grid>
     </Container>
   );
 };
+
